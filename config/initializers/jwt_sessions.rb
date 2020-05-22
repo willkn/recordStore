@@ -1,0 +1,1 @@
+JWTSessions.encryption_key = 'secret' # Put an encryption algorithm here before deploying
