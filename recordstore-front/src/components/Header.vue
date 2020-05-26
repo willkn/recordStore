@@ -1,30 +1,23 @@
 <template>
   <div>
       <h1>RECORDSTORE</h1>
-      <h1>{{ loggedIn }}</h1>
         <div>
-            <router-link to="/" v-if="!loggedIn">Sign in</router-link>
-            <router-link to="/signup" v-if="!loggedIn">Sign Up</router-link>
-            <router-link to="/records" v-if="loggedIn">Records</router-link>
-            <router-link to="/artists" v-if="loggedIn">Artists</router-link>
+            <!-- <router-link to="/" v-if="!loggedIn">Sign in</router-link>
+            <router-link to="/signup" v-if="!loggedIn">Sign Up</router-link> -->
+            <!-- <router-link to="/records">Records</router-link>
+            <router-link to="/artists">Artists</router-link> -->
         </div>
       <img src="@/assets/record.jpeg">
       <br>
-      <button v-if="!this.loggedIn" @click.prevent="signOut">Sign out</button>
   </div>
 </template>
 
 <script>
 export default {
-    data () {
-        return {
-            loggedIn: false
-        }
-    },
     methods: {
         signedIn () {
             // Returns a true or false bool that decides what to render.
-            loggedIn = localStorage.signedIn
+             this.loggedIn = localStorage.getItem('signedIn')
         },
         signOut () {
             // Triggers the signIn controllers destroy action

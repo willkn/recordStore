@@ -8,4 +8,10 @@ class HomeController < ApplicationController
         @users = User.all
         render json: @users
     end
+
+    def allRecords
+        @records = Record.all
+        
+        render json: @records
+    end
 end

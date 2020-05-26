@@ -15,8 +15,14 @@ export default {
   name: 'App',
   components: {
     'app-header': Header,
-    'app-navbar': Navbar
-  }
+    'app-navbar': Navbar,
+  },
+  // // created () {
+  // //   if (localStorage.getItem('signedIn') != true) {
+  // //     this.$router.replace('/')
+  // //   }
+  // }
+
 }
 </script>
 

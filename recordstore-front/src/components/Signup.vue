@@ -26,7 +26,6 @@
       <button class="submit" @click.prevent="signup">Submit</button>
       <br />
       <br />
-      <router-link to="/">Sign in</router-link>
       <p>email: {{ email }}</p>
       <p>password: {{ password }}</p>
       <p>password confirmation: {{ password_confirmation }}</p>
@@ -60,11 +59,12 @@ export default {
           })
           // If successful execute signinSuccesful
           .then(response => {
+            this.$router.replace("/home")
             this.email = ''
             this.password = ''
             this.password_confirmation = ''
             this.signinSuccessful(response)
-            
+
             })
           // If it doesn't run for whatever reason, execute signupFailed
           .catch(error => this.signinFailed(error));

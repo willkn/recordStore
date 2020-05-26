@@ -1,6 +1,6 @@
 class RecordsController < ApplicationController
-      before_action :authorize_access_request!, except: [:show, :index]
-      before_action :set_record, only: [:show, :update, :destroy]
+      # before_action :authorize_access_request!, except: [:show, :index]
+      # before_action :set_record, only: [:show, :update, :destroy]
 
       # GET /records
       def index
@@ -8,6 +8,11 @@ class RecordsController < ApplicationController
 
         render json: @records
       end
+
+      def allRecords
+        @records = records.all
+        
+        render json: @records
 
       # GET /records/1
       def show
@@ -47,6 +52,7 @@ class RecordsController < ApplicationController
 
         # Only allow a trusted parameter "white list" through.
         def record_params
-          params.require(:record).permit(:title, :year, :artist_id)
+          params.require(:record).permit(:title, :year, :artist, :artist_id)
         end
     end
+  end

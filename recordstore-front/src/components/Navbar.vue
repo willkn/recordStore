@@ -98,4 +98,8 @@ export default {
 #signIn {
     float: right;
 }
+
+#signUp {
+    float: right;
+}
 </style>
