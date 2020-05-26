@@ -53,7 +53,7 @@ export default {
     signup() {
       if (this.password === this.password_confirmation) {
         this.$http.plain
-          .post("http://localhost:3000/signup", {
+          .post("http://localhost:3000/signup ", {
             email: this.email,
             password: this.password,
             password_confirmation: this.password_confirmation

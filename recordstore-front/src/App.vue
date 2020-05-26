@@ -7,10 +7,13 @@
 
 <script>
 import Header from '@/components/Header'
+import Records from '@/components/Records'
+
 export default {
   name: 'App',
   components: {
-    'app-header': Header
+    'app-header': Header,
+    'app-header': Records
   }
 }
 </script>
