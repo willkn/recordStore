@@ -1,9 +1,9 @@
-class SignInController < ApplicationController
+class SigninController < ApplicationController
     before_action :authorize_access_request!, only: [:destroy]
-
+    # Recieves an email and password from the POST request made by Axios.
     def create 
+        puts("success!")
         user = User.find_by(email: params[:email])
-
         if user.authenticate(params[:password])
             payload = { user_id: user.id}
             session = JWTSession::Session.new(payload: payload, refresh_by_access_allowed: true)
@@ -16,6 +16,7 @@ class SignInController < ApplicationController
             render json: { csrf: tokens[:csrf] }
         else
             not_found
+        end
     end
 
     def destroy
@@ -29,3 +30,4 @@ class SignInController < ApplicationController
     def not_found
         render json: { error: 'Cannot find email/password combination' }, status: :not_found
     end
+end

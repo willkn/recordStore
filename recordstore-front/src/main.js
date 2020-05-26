@@ -1,13 +1,21 @@
 import Vue from 'vue'
-import App from './App.vue'
-import './registerServiceWorker'
+import App from './App'
 import router from './router'
-import store from './store'
+import VueAxios from 'vue-axios'
+import { securedAxiosInstance, plainAxiosInstance } from '@/backend/index'
 
 Vue.config.productionTip = false
+Vue.use(VueAxios, {
+  secured: securedAxiosInstance,
+  plain: plainAxiosInstance
+})
+
 
 new Vue({
+  el: '#app',
   router,
-  store,
-  render: h => h(App)
-}).$mount('#app')
+  securedAxiosInstance,
+  plainAxiosInstance,
+  components: { App },
+  template: '<App/>'
+})
