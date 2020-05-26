@@ -26,9 +26,9 @@
       <button class="submit" @click.prevent="signup">Submit</button>
       <br />
       <br />
-      <p>email: {{ email }}</p>
+      <!-- <p>email: {{ email }}</p>
       <p>password: {{ password }}</p>
-      <p>password confirmation: {{ password_confirmation }}</p>
+      <p>password confirmation: {{ password_confirmation }}</p> -->
     </form>
   </div>
 </template>

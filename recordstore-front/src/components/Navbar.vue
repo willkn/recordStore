@@ -4,7 +4,7 @@
     <router-link to="/records">Records</router-link>
     <router-link to="/artists">Artists</router-link>
     <router-link id="signIn" to="/">Sign in</router-link>
-    <router-link id="signUp" to="/signup">Sign up</router-link>
+    <!-- <router-link id="signUp" to="/signup">Sign up</router-link> -->
     <a id="signOut" href="/" v-if="signedIn" @click="signOut">Sign out</a>
     <!-- <app-profile id="profile" v-if="signedIn"></app-profile> -->
   </div>

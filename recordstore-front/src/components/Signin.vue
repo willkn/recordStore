@@ -28,9 +28,10 @@
       <br />
       <button class="submit" @click.prevent="signin">Submit</button>
       <p class="error">{{ error }}</p>
+      <p>Not got an account? <router-link id="signupText" to="/signup">Sign up</router-link></p>
       <br />
       <br />
-      <p>email: {{ email }} password: {{ password }}</p>
+      <!-- <p>email: {{ email }} password: {{ password }}</p> -->
     </form>
   </div>
 </template>
@@ -108,5 +109,8 @@ label {
 }
 .error {
   color: red;
+}
+#signupText {
+    text-decoration: none;
 }
 </style>
