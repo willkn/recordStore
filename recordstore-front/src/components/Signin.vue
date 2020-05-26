@@ -11,6 +11,7 @@
           </label>
           <br>
           <button class="submit" @click.prevent="signin">Submit</button>
+          <p class="error">{{ error }}</p>
           <br><br>
           <router-link to="/signup">Sign up</router-link>
             <p>email: {{ email }} password: {{ password }}</p>
@@ -48,18 +49,22 @@ export default {
             // Set the csrf and signedIn values to positive and reroute to records
             localStorage.csrf = response.data.csrf
             localStorage.signedIn = true
+            this.$emit('loginSuccessful', email)
+            console.log('emit')
             this.error = ''
-            this.$router.replace('/records')
+            this.$router.replace('/home')
         },
         signinFailed () {
-            // Relook at this, don't understand it
-            this.error = "signin error"
+            this.error = "Incorrect username/password"
             delete localStorage.csrf
             delete localStorage.signedIn
         },
         checkSignedIn () {
             if (localStorage.signedIn) {
-                this.$router.replace('/records')
+                return
+            }
+            else {
+                this.$router.replace('/')
             }
         }
 
@@ -82,5 +87,8 @@ export default {
 
     label {
         margin: bottom;
+    }
+    .error {
+        color: red;
     }
 </style>

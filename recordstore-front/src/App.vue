@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <app-navbar></app-navbar>
     <app-header></app-header>
     <router-view/>
   </div>
@@ -8,12 +9,13 @@
 <script>
 import Header from '@/components/Header'
 import Records from '@/components/Records'
+import Navbar from '@/components/Navbar'
 
 export default {
   name: 'App',
   components: {
     'app-header': Header,
-    'app-header': Records
+    'app-navbar': Navbar
   }
 }
 </script>
@@ -25,6 +27,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

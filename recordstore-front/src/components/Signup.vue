@@ -59,7 +59,13 @@ export default {
             password_confirmation: this.password_confirmation
           })
           // If successful execute signinSuccesful
-          .then(response => this.signinSuccesful(response))
+          .then(response => {
+            this.email = ''
+            this.password = ''
+            this.password_confirmation = ''
+            this.signinSuccessful(response)
+            
+            })
           // If it doesn't run for whatever reason, execute signupFailed
           .catch(error => this.signinFailed(error));
       }

@@ -6,7 +6,14 @@
 
 <script>
 export default {
-
+    created () {
+        if (!localStorage.signedIn) {
+            this.$router.replace("/");
+        }
+        else {
+            return
+        }
+    }
 }
 </script>
 

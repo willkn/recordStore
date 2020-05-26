@@ -1,32 +1,36 @@
 <template>
   <div>
       <h1>RECORDSTORE</h1>
+      <h1>{{ loggedIn }}</h1>
         <div>
-            <router-link to="/" v-if="!signedIn()">Sign in</router-link>
-            <router-link to="/signup" v-if="!signedIn">Sign Up</router-link>
-            <router-link to="/records" v-if="signedIn">Records</router-link>
-            <router-link to="/artists" v-if="signedIn">Artists</router-link>
-            <router-link to="#" v-if="signedIn" @click.prevent="signOut">Sign out</router-link>
+            <router-link to="/" v-if="!loggedIn">Sign in</router-link>
+            <router-link to="/signup" v-if="!loggedIn">Sign Up</router-link>
+            <router-link to="/records" v-if="loggedIn">Records</router-link>
+            <router-link to="/artists" v-if="loggedIn">Artists</router-link>
         </div>
       <img src="@/assets/record.jpeg">
+      <br>
+      <button v-if="!this.loggedIn" @click.prevent="signOut">Sign out</button>
   </div>
 </template>
 
 <script>
 export default {
-    name: 'Header',
-    created () {
-        this.signedIn()
+    data () {
+        return {
+            loggedIn: false
+        }
     },
     methods: {
         signedIn () {
             // Returns a true or false bool that decides what to render.
-            return localStorage.signedIn
+            loggedIn = localStorage.signedIn
         },
         signOut () {
             // Triggers the signIn controllers destroy action
             this.$http.secured.delete('/signin')
             .then(response => {
+                console.log('logging out...')
                 delete localStorage.csrf
                 delete localStorage.signedIn
                 this.$router.replace('/')
@@ -41,6 +45,10 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
+a {
+    text-decoration: none;
+}
 
 </style>
